@@ -1055,6 +1055,12 @@ function ChatScreen(): React.JSX.Element {
             isShowLoading={isShowVoiceLoading}
             onStopPress={() => {
               trigger(HapticFeedbackTypes.notificationWarning);
+              // Clear input and files immediately when stop is pressed
+              textInputViewRef.current?.clear();
+              inputTextRef.current = '';
+              setHasInputText(false);
+              setSelectedFiles([]);
+
               if (isNovaSonic) {
                 // End voice chat conversation
                 endVoiceConversation().then(success => {
