@@ -372,7 +372,7 @@ landscape orientation.
 🌐 **Fast Request Speed**
 
 - Speed up end-to-end API requests through **image compression**
-- Deploying APIs in the **same region** as Bedrock provides lower latency
+- Deploying APIs in the **same region** as Bedrock provides lower latency.
 
 📱 **Fast Render Speed**
 
