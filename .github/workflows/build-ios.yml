@@ -19,3 +19,10 @@ jobs:
           cd react-native && npm i
           cd ios && pod install && cd ..
           npm run build:ios
+      - name: Create build directory
+        run: mkdir -p react-native/ios/build
+      - name: Upload iOS Archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-archive
+          path: react-native/ios/build/SwiftChat.xcarchive
