@@ -9,11 +9,16 @@ on:
 permissions:
   contents: read
   pull-requests: write
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
 jobs:
   build-ios:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Run build ios
         run: |
           cd react-native && npm i
@@ -22,7 +27,7 @@ jobs:
       - name: Create build directory
         run: mkdir -p react-native/ios/build
       - name: Upload iOS Archive
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: ios-archive
           path: react-native/ios/build/SwiftChat.xcarchive
